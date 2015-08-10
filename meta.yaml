@@ -1,0 +1,52 @@
+package:
+  name: websockify
+  version: "0.6.1"
+
+source:
+  fn: websockify-0.6.1.zip
+  url: https://pypi.python.org/packages/source/w/websockify/websockify-0.6.1.zip
+  md5: b16c07014b36f0e4fdffe61777b25a63
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    - websockify = websockify.websocketproxy:websockify_init
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - websockify
+
+  commands:
+    - websockify --help
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/kanaka/websockify
+  license: LGPLv3
+  summary: 'Websockify.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
